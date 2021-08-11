@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+</head>
+<body>
+<header th:insert="blocks/header.html :: header"></header>
+
+<div class="container">
+  <div th:if="${param.error}">
+    Invalid username and password.
+  </div>
+  <div th:if="${param.logout}">
+    You have been logged out.
+  </div>
+<form th:action="@{/login}" method="post">
+  <div class="mb-3"><label class="form-label"> User Name : <input type="text" name="username"/> </label></div>
+  <div class="mb-3"><label class="form-label"> Password: <input type="password" name="password"/> </label></div>
+  <button type="submit" class="btn btn-primary">Sign in</button>
+  <a href="/registration" type="submit" class="button btn btn-primary">Sign up</a>
+</form>
+</div>
+<div th:insert="blocks/footer.html :: footer"></div>
+</body>
+</html>
